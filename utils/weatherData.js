@@ -11,8 +11,7 @@ const getUVData = async (lat, lng) => {
       headers: { "x-access-token": openuv.SECRET_KEY },
       params: { lat, lng }
     });
-    // Debug log to check data:
-    // console.log("OpenUV API response:", response.data);
+
     return response.data;
   } catch (error) {
     console.error("Error fetching UV data:", error.response?.data || error.message);
