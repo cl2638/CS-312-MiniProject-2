@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Should I Wear Sunscreen?</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="nav">
+      <a href="/">Home</a> | <a href="/about">About</a>
+    </div>
+
+    <h1>Should I Wear Sunscreen?</h1>
+
+    <form action="/weather" method="get">
+      <input type="number" step="any" name="lat" placeholder="Latitude" required />
+      <input type="number" step="any" name="lng" placeholder="Longitude" required />
+      <button type="submit">Check UV Level</button>
+    </form>
+
+    <% if (data) { %>
+      <div class="result">
+        <p><strong>Location:</strong> (<%= data.lat %>, <%= data.lng %>)</p>
+        <p><strong>Current UV Index:</strong> <%= data.uv.toFixed(2) %></p>
+        <p><strong>Measured At (Local Time):</strong> <%= data.uvLocalTime %></p>
+        <p class="message"><%= data.message %></p>
+      </div>
+    <% } %>
+
+    <% if (error) { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+  </div>
+</body>
+</html>
